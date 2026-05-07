@@ -103,12 +103,78 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 #flogo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--gold);letter-spacing:.3em;text-transform:uppercase}
 #fsub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:.5rem}
 .empty{text-align:center;padding:3rem;color:var(--text-light);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase}
+
+#topnav{
+  position:absolute;top:0;left:0;right:0;z-index:10;
+  padding:.6rem 2rem;
+  background:linear-gradient(to bottom,rgba(5,13,26,.7),transparent);
+}
+#topnav-inner{
+  display:flex;align-items:center;gap:.2rem;
+  max-width:1100px;margin:0 auto;
+  flex-wrap:wrap;
+}
+#topnav a{
+  display:flex;align-items:center;gap:.45rem;
+  padding:.4rem .75rem;border-radius:3px;
+  text-decoration:none;
+  color:rgba(255,255,255,.65);
+  font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:'Raleway',sans-serif;
+  transition:background .2s,color .2s;
+  white-space:nowrap;
+}
+#topnav a:hover{
+  background:rgba(196,164,90,.15);
+  color:rgba(255,255,255,.95);
+}
+#topnav a img{
+  width:14px;height:14px;border-radius:2px;
+  opacity:.75;transition:opacity .2s;
+}
+#topnav a:hover img{opacity:1;}
 </style>
 </head>
 <body>
 
 <div id="loading"><div id="loading-logo">The Engine Lab</div><div id="loading-bar-wrap"><div id="loading-bar"></div></div></div>
 <section id="hero">
+<nav id="topnav">
+  <div id="topnav-inner">
+    <a href="https://web.whatsapp.com" target="_blank" title="WhatsApp Web">
+      <img src="https://www.google.com/s2/favicons?domain=web.whatsapp.com&sz=32" alt="WhatsApp">
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://chatgpt.com" target="_blank" title="ChatGPT">
+      <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" alt="ChatGPT">
+      <span>ChatGPT</span>
+    </a>
+    <a href="https://gemini.google.com" target="_blank" title="Gemini">
+      <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" alt="Gemini">
+      <span>Gemini</span>
+    </a>
+    <a href="https://drive.google.com" target="_blank" title="Google Drive">
+      <img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=32" alt="Drive">
+      <span>Drive</span>
+    </a>
+    <a href="https://calendar.google.com" target="_blank" title="Google Agenda">
+      <img src="https://www.google.com/s2/favicons?domain=calendar.google.com&sz=32" alt="Agenda">
+      <span>Agenda</span>
+    </a>
+    <a href="https://docs.google.com/document" target="_blank" title="Google Docs">
+      <img src="https://www.google.com/s2/favicons?domain=docs.google.com&sz=32" alt="Docs">
+      <span>Docs</span>
+    </a>
+    <a href="https://docs.google.com/spreadsheets" target="_blank" title="Google Sheets">
+      <img src="https://www.google.com/s2/favicons?domain=sheets.google.com&sz=32" alt="Sheets">
+      <span>Sheets</span>
+    </a>
+    <a href="https://claude.ai" target="_blank" title="Claude">
+      <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" alt="Claude">
+      <span>Claude</span>
+    </a>
+  </div>
+</nav>
   <div id="hero-bg"></div><div id="hero-overlay"></div>
   <div class="geo" id="r1"></div><div class="geo" id="r2"></div><div class="geo" id="vl"></div>
   <div id="hero-content">
