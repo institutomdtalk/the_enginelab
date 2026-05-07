@@ -107,8 +107,7 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 #topnav{
   position:absolute;top:0;left:0;right:0;z-index:10;
   padding:.65rem 2rem;
-  background:rgba(5,13,26,.92);
-  border-bottom:1px solid rgba(196,164,90,.15);
+  background:transparent;
 }
 #topnav-inner{
   display:flex;align-items:center;justify-content:center;gap:.15rem;
@@ -128,11 +127,10 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
   background:rgba(196,164,90,.12);
   color:rgba(255,255,255,.95);
 }
-#topnav a img{
-  width:15px;height:15px;border-radius:2px;
-  opacity:.9;transition:opacity .2s;
+.nav-icon{
+  width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-#topnav a:hover img{opacity:1;}
+.nav-icon svg{width:16px;height:16px;}
 </style>
 </head>
 <body>
@@ -141,40 +139,33 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 <section id="hero">
 <nav id="topnav">
   <div id="topnav-inner">
-    <a href="https://web.whatsapp.com" target="_blank" title="WhatsApp Web">
-      <img src="https://www.google.com/s2/favicons?domain=web.whatsapp.com&sz=32" alt="WhatsApp">
-      <span>WhatsApp</span>
+    <a href="https://web.whatsapp.com" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 8.5C21.7 6.7 19.3 5.7 16.8 5.7c-5.2 0-9.4 4.2-9.4 9.4 0 1.7.4 3.3 1.3 4.7L7.2 25l5.4-1.4c1.4.7 2.9 1.1 4.5 1.1 5.2 0 9.4-4.2 9.4-9.4-.1-2.5-1.1-4.9-2.9-6.8zm-6.7 14.4c-1.4 0-2.8-.4-4-1.1l-.3-.2-3.2.8.9-3.1-.2-.3c-.8-1.3-1.2-2.7-1.2-4.2 0-4.3 3.5-7.8 7.8-7.8 2.1 0 4 .8 5.5 2.3s2.3 3.4 2.3 5.5c0 4.3-3.5 7.8-7.8 7.8v.3zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.7.8-.8 1-.2.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4-.1-.2-.5-1.3-.7-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.5 4 3.4.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z" fill="white"/></svg></span><span>WhatsApp</span>
     </a>
-    <a href="https://chatgpt.com" target="_blank" title="ChatGPT">
-      <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" alt="ChatGPT">
-      <span>ChatGPT</span>
+    <a href="https://chatgpt.com" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835 9.964 9.964 0 0 0-6.8-3.109 10.079 10.079 0 0 0-9.617 6.977 9.967 9.967 0 0 0-6.663 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 6.8 3.109 10.079 10.079 0 0 0 9.617-6.976 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.24-11.818zm-17.963 14.5a7.453 7.453 0 0 1-4.774-1.719l.237-.14 7.927-4.578a.786.786 0 0 0 .397-.679v-11.17l3.353 1.936a.072.072 0 0 1 .039.056v9.258a7.505 7.505 0 0 1-7.179 7.036zm-15.373-6.876a7.43 7.43 0 0 1-.889-5.046l.237.141 7.927 4.577a.784.784 0 0 0 .786 0l9.688-5.594v3.873a.072.072 0 0 1-.029.06L13.65 27.386a7.504 7.504 0 0 1-9.454-2.892zm-1.997-16.268A7.428 7.428 0 0 1 7.1 5.474v9.404a.782.782 0 0 0 .397.679l9.688 5.594-3.353 1.936a.071.071 0 0 1-.068.004L5.426 18.15a7.504 7.504 0 0 1-.227-9.922zm27.744 6.437l-9.688-5.594 3.353-1.936a.072.072 0 0 1 .068-.004l8.338 4.814a7.503 7.503 0 0 1-1.158 13.528v-9.404a.784.784 0 0 0-.913-.404zm3.336-5.043l-.237-.14-7.927-4.578a.784.784 0 0 0-.786 0L14.64 14.305v-3.874a.072.072 0 0 1 .029-.06l8.338-4.814a7.503 7.503 0 0 1 11.146 7.776zm-20.396 6.695l-3.353-1.936a.072.072 0 0 1-.039-.056v-9.258a7.504 7.504 0 0 1 12.303-5.754l-.237.14-7.927 4.578a.786.786 0 0 0-.397.679zm1.817-3.925l4.315-2.49 4.315 2.49v4.978l-4.315 2.49-4.315-2.49z" fill="#10a37f"/></svg></span><span>ChatGPT</span>
     </a>
-    <a href="https://gemini.google.com" target="_blank" title="Gemini">
-      <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" alt="Gemini">
-      <span>Gemini</span>
+    <a href="https://gemini.google.com" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path d="M14 28A14 14 0 0 1 0 14 14 14 0 0 1 14 0a14 14 0 0 1 14 14 14 14 0 0 1-14 14zm0-26.5C6.556 1.5 1.5 6.556 1.5 14S6.556 26.5 14 26.5 26.5 21.444 26.5 14 21.444 1.5 14 1.5zM14 21.5c-.28 0-.5-.22-.5-.5 0-3.584-2.916-6.5-6.5-6.5-.28 0-.5-.22-.5-.5s.22-.5.5-.5c3.584 0 6.5-2.916 6.5-6.5 0-.28.22-.5.5-.5s.5.22.5.5c0 3.584 2.916 6.5 6.5 6.5.28 0 .5.22.5.5s-.22.5-.5.5c-3.584 0-6.5 2.916-6.5 6.5 0 .28-.22.5-.5.5z" fill="url(#gem_grad)"/><defs><linearGradient id="gem_grad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4285F4"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg></span><span>Gemini</span>
     </a>
-    <a href="https://drive.google.com" target="_blank" title="Google Drive">
-      <img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=32" alt="Drive">
-      <span>Drive</span>
+    <a href="https://drive.google.com" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg></span><span>Drive</span>
     </a>
-    <a href="https://calendar.google.com" target="_blank" title="Google Agenda">
-      <img src="https://www.google.com/s2/favicons?domain=calendar.google.com&sz=32" alt="Agenda">
-      <span>Agenda</span>
+    <a href="https://calendar.google.com" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="4" fill="#fff"/><rect x="4" y="4" width="40" height="10" rx="2" fill="#1a73e8"/><rect x="4" y="14" width="40" height="30" rx="2" fill="#fff" stroke="#e0e0e0" stroke-width="1"/><text x="24" y="34" font-family="Arial" font-size="16" font-weight="bold" fill="#1a73e8" text-anchor="middle">31</text><rect x="4" y="14" width="40" height="8" fill="#1a73e8"/><text x="24" y="21" font-family="Arial" font-size="7" fill="white" text-anchor="middle">AGENDA</text></svg></span><span>Agenda</span>
     </a>
-    <a href="https://docs.google.com/document" target="_blank" title="Google Docs">
-      <img src="https://www.google.com/s2/favicons?domain=docs.google.com&sz=32" alt="Docs">
-      <span>Docs</span>
+    <a href="https://docs.google.com/document" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 36 48" xmlns="http://www.w3.org/2000/svg"><path d="M22 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V14L22 0z" fill="#4285F4"/><path d="M22 0l14 14H22V0z" fill="#A8C7FA"/><rect x="7" y="22" width="22" height="2.5" rx="1.25" fill="white"/><rect x="7" y="28" width="22" height="2.5" rx="1.25" fill="white"/><rect x="7" y="34" width="15" height="2.5" rx="1.25" fill="white"/></svg></span><span>Docs</span>
     </a>
-    <a href="https://docs.google.com/spreadsheets" target="_blank" title="Google Sheets">
-      <img src="https://www.google.com/s2/favicons?domain=sheets.google.com&sz=32" alt="Sheets">
-      <span>Sheets</span>
+    <a href="https://docs.google.com/spreadsheets" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 36 48" xmlns="http://www.w3.org/2000/svg"><path d="M22 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V14L22 0z" fill="#0F9D58"/><path d="M22 0l14 14H22V0z" fill="#87CEAA"/><rect x="7" y="20" width="22" height="17" rx="1" fill="white" fill-opacity="0.9"/><line x1="7" y1="26" x2="29" y2="26" stroke="#0F9D58" stroke-width="1"/><line x1="7" y1="31" x2="29" y2="31" stroke="#0F9D58" stroke-width="1"/><line x1="16" y1="20" x2="16" y2="37" stroke="#0F9D58" stroke-width="1"/></svg></span><span>Sheets</span>
     </a>
-    <a href="https://claude.ai" target="_blank" title="Claude">
-      <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" alt="Claude">
-      <span>Claude</span>
+    <a href="https://claude.ai" target="_blank">
+      <span class="nav-icon"><svg viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><circle cx="23" cy="23" r="23" fill="#CC785C"/><text x="23" y="29" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">C</text></svg></span><span>Claude</span>
     </a>
   </div>
 </nav>
+
   <div id="hero-bg"></div><div id="hero-overlay"></div>
   <div class="geo" id="r1"></div><div class="geo" id="r2"></div><div class="geo" id="vl"></div>
   <div id="hero-content">
