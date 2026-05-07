@@ -69,6 +69,7 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 .scard:hover{border-color:rgba(196,164,90,.3);box-shadow:0 2px 12px rgba(11,29,58,.05)}
 .scard.done-card{border-left:3px solid var(--gold)}
 .scard-top{display:grid;grid-template-columns:24px 180px 1fr auto;align-items:center;gap:1rem}
+.scard-top-cur{display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:1rem}
 .scard-bot{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);padding-left:36px}
 .scd{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .scn{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -274,6 +275,7 @@ function loadCurWeek(tab){
 }
 function renderStudents(tab,students,week){
   var grid=document.getElementById(tab+'-grid');
+  var isCur=(tab==='curadoria');
   if(!students.length){grid.innerHTML='<div class="empty">Nenhum aluno.</div>';return}
   grid.innerHTML='';
   students.forEach(function(s,idx){
@@ -284,13 +286,15 @@ function renderStudents(tab,students,week){
     var card=document.createElement('div');
     card.className='scard'+(checked?' done-card':'');
     var top=document.createElement('div');
-    top.className='scard-top';
+    top.className=isCur?'scard-top scard-top-cur':'scard-top';
     var ck=document.createElement('div');
     ck.className='ck'+(checked?' done':'');
     if(checked)ck.textContent='v';
     if(row&&col)(function(t,r,c,el,cd){el.onclick=function(){toggleCk(t,r,c,el,cd)};})(tab,row,col,ck,card);
     top.appendChild(ck);
-    var de=document.createElement('div');de.className='scd';de.textContent=s.date||'';top.appendChild(de);
+    if(!isCur){
+      var de=document.createElement('div');de.className='scd';de.textContent=s.date||'';top.appendChild(de);
+    }
     var ne=document.createElement('div');ne.className='scn';ne.textContent=s.name;top.appendChild(ne);
     var tgs=document.createElement('div');tgs.className='sctags';
     var t1=document.createElement('span');t1.className='tag ta';t1.textContent=s.area;tgs.appendChild(t1);
