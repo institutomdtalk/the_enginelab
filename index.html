@@ -77,7 +77,12 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 .tag{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;white-space:nowrap}
 .ta{background:rgba(196,164,90,.1);color:#7A5A1A}
 .tl{background:rgba(11,29,58,.07);color:var(--navy);border:1px solid rgba(11,29,58,.12)}
-.scontent{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+.scontent{font-size:.8rem;color:var(--text-muted);line-height:1.5;outline:none;border:none;background:transparent;width:100%;font-family:'Raleway',sans-serif;resize:none;cursor:text;padding:0}
+.scontent:focus{color:var(--text-body)}
+.scontent-wrap{position:relative;display:flex;align-items:flex-start;gap:.6rem}
+.save-btn{display:none;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;background:var(--navy);color:#fff;border:none;padding:.25rem .7rem;border-radius:2px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:'Raleway',sans-serif}
+.save-btn.visible{display:inline-block}
+.save-btn.saving-txt{background:var(--gold);color:var(--navy)}
 .ck{width:18px;height:18px;border:1.5px solid var(--border);border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
 .ck:hover{border-color:var(--gold)}
 .ck.done{background:var(--navy);border-color:var(--navy);color:#fff;font-size:11px;font-weight:700}
@@ -305,11 +310,17 @@ function renderStudents(tab,students,week){
     var t2=document.createElement('span');t2.className='tag tl';t2.textContent=s.level;tgs.appendChild(t2);
     top.appendChild(tgs);
     card.appendChild(top);
-    if(content){
-      var bot=document.createElement('div');bot.className='scard-bot';
-      var ct=document.createElement('div');ct.className='scontent';ct.textContent=content;
-      bot.appendChild(ct);card.appendChild(bot);
-    }
+    var bot=document.createElement('div');bot.className='scard-bot';
+    var wrap=document.createElement('div');wrap.className='scontent-wrap';
+    var ct=document.createElement('textarea');ct.className='scontent';ct.value=content;ct.rows=1;ct.placeholder='Clique para adicionar conteudo...';
+    ct.addEventListener('input',function(){autoResize(ct);showSave(saveBtn)});
+    ct.addEventListener('focus',function(){autoResize(ct)});
+    var saveBtn=document.createElement('button');saveBtn.className='save-btn';saveBtn.textContent='Salvar';
+    (function(t,r,c,textarea,btn){
+      btn.onclick=function(){saveContent(t,r,c,textarea,btn)};
+    })(tab,row,col-1,ct,saveBtn);
+    wrap.appendChild(ct);wrap.appendChild(saveBtn);
+    bot.appendChild(wrap);card.appendChild(bot);
     grid.appendChild(card);
   });
 }
@@ -369,6 +380,18 @@ async function loadHistory(tab,name){
     if(!s.history.length)tl.innerHTML='<div class="empty">Sem historico.</div>';
     emp.style.display='none';pan.classList.add('show');
   }catch(e){emp.textContent='Erro ao carregar.'}
+}
+function autoResize(el){el.style.height='auto';el.style.height=el.scrollHeight+'px'}
+function showSave(btn){btn.classList.add('visible')}
+async function saveContent(tab,row,contentCol,textarea,btn){
+  btn.classList.add('saving-txt');btn.textContent='Salvando...';
+  try{
+    await apiPost({action:'saveContent',tab:tab,row:row,col:contentCol,value:textarea.value});
+    btn.classList.remove('saving-txt','visible');btn.textContent='Salvar';
+  }catch(e){
+    btn.classList.remove('saving-txt');btn.textContent='Erro!';
+    setTimeout(function(){btn.textContent='Salvar'},2000);
+  }
 }
 initHero();
 initReveal();
