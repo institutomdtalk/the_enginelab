@@ -65,16 +65,18 @@ body{font-family:'Raleway',sans-serif;background:var(--off-white);color:var(--te
 .wbtn:hover{background:var(--navy-mid)}
 .tbadge{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(196,164,90,.1);border:1px solid rgba(196,164,90,.25);padding:.3rem .8rem;border-radius:2px}
 .sgrid{display:flex;flex-direction:column;gap:.5rem}
-.scard{background:#fff;border:1px solid var(--border);border-radius:3px;padding:.75rem 1.4rem;transition:border-color .25s,box-shadow .25s;display:grid;grid-template-columns:24px 180px 200px 1fr;align-items:center;gap:1rem}
+.scard{background:#fff;border:1px solid var(--border);border-radius:3px;padding:.8rem 1.4rem;transition:border-color .25s,box-shadow .25s}
 .scard:hover{border-color:rgba(196,164,90,.3);box-shadow:0 2px 12px rgba(11,29,58,.05)}
-.scard.done-card{opacity:.5}
+.scard.done-card{border-left:3px solid var(--gold)}
+.scard-top{display:grid;grid-template-columns:24px 180px 1fr auto;align-items:center;gap:1rem}
+.scard-bot{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);padding-left:36px}
 .scd{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .scn{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sctags{display:flex;gap:.35rem;align-items:center;flex-wrap:wrap}
+.sctags{display:flex;gap:.35rem;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .tag{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;white-space:nowrap}
 .ta{background:rgba(196,164,90,.1);color:#7A5A1A}
 .tl{background:rgba(11,29,58,.07);color:var(--navy);border:1px solid rgba(11,29,58,.12)}
-.scontent{font-size:.78rem;color:var(--text-muted);line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.scontent{font-size:.8rem;color:var(--text-muted);line-height:1.5}
 .ck{width:18px;height:18px;border:1.5px solid var(--border);border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;flex-shrink:0}
 .ck:hover{border-color:var(--gold)}
 .ck.done{background:var(--navy);border-color:var(--navy);color:#fff;font-size:11px;font-weight:700}
@@ -272,7 +274,6 @@ function loadCurWeek(tab){
 }
 function renderStudents(tab,students,week){
   var grid=document.getElementById(tab+'-grid');
-  var isCur=(tab==='curadoria');
   if(!students.length){grid.innerHTML='<div class="empty">Nenhum aluno.</div>';return}
   grid.innerHTML='';
   students.forEach(function(s,idx){
@@ -282,18 +283,25 @@ function renderStudents(tab,students,week){
     var row=we.row,col=we.col;
     var card=document.createElement('div');
     card.className='scard'+(checked?' done-card':'');
+    var top=document.createElement('div');
+    top.className='scard-top';
     var ck=document.createElement('div');
     ck.className='ck'+(checked?' done':'');
     if(checked)ck.textContent='v';
     if(row&&col)(function(t,r,c,el,cd){el.onclick=function(){toggleCk(t,r,c,el,cd)};})(tab,row,col,ck,card);
-    card.appendChild(ck);
-    var de=document.createElement('div');de.className='scd';de.textContent=s.date||s.name;card.appendChild(de);
-    var ne=document.createElement('div');ne.className='scn';ne.textContent=s.date?s.name:(isCur?s.name:'');card.appendChild(ne);
+    top.appendChild(ck);
+    var de=document.createElement('div');de.className='scd';de.textContent=s.date||'';top.appendChild(de);
+    var ne=document.createElement('div');ne.className='scn';ne.textContent=s.name;top.appendChild(ne);
     var tgs=document.createElement('div');tgs.className='sctags';
     var t1=document.createElement('span');t1.className='tag ta';t1.textContent=s.area;tgs.appendChild(t1);
     var t2=document.createElement('span');t2.className='tag tl';t2.textContent=s.level;tgs.appendChild(t2);
-    card.appendChild(tgs);
-    var ct=document.createElement('div');ct.className='scontent';ct.textContent=content;card.appendChild(ct);
+    top.appendChild(tgs);
+    card.appendChild(top);
+    if(content){
+      var bot=document.createElement('div');bot.className='scard-bot';
+      var ct=document.createElement('div');ct.className='scontent';ct.textContent=content;
+      bot.appendChild(ct);card.appendChild(bot);
+    }
     grid.appendChild(card);
   });
 }
